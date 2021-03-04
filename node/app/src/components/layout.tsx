@@ -1,23 +1,19 @@
-import { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from './layout.module.css';
+import utilStyles from '../styles/utils.module.css';
+import Link from 'next/link';
 
-const name = 'Keitaro'
-export const siteTitle = 'KeitarooOO'
+const name = 'Keitaro';
+export const siteTitle = 'KeitarooOO';
 
 type layout = {
-  children: React.ReactNode
-  home?: boolean
-}
+  children: React.ReactNode;
+  home?: boolean;
+};
 
 // const Layout = () =>{}の形だとexportしたときに型定義が引き継がれないっぽい
-function Layout({
-  children,
-  home
-}: layout): JSX.Element{
+function Layout({ children, home }: layout): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
@@ -79,7 +75,7 @@ function Layout({
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

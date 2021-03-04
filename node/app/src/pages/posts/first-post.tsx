@@ -1,7 +1,7 @@
-import { NextPage } from 'next'
-import Link from 'next/link'
-import Head from 'next/head'
-import Layout from '../../components/layout'
+import { NextPage } from 'next';
+import Link from 'next/link';
+import Head from 'next/head';
+import Layout from '../../components/layout';
 
 const FirstPost: NextPage = () => {
   return (
@@ -16,7 +16,7 @@ const FirstPost: NextPage = () => {
         </Link>
       </h2>
     </Layout>
-  )
-}
+  );
+};
 
-export default FirstPost
+export default FirstPost;

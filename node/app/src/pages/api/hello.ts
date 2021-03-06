@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-type Response = {
-  statusCode: number
-  json({ name: string }): void
-}
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default (_req: void, res: Response): void => {
-  res.status(200).json({ name: 'John Doe' })
-}
+// _req = HTTP incoming message, res = HTTP server response, _reqは_でも良さそう
+const handler = (_req: NextApiRequest, res: NextApiResponse): void => {
+  res.status(200).json({ text: 'Hello' });
+};
+
+export default handler

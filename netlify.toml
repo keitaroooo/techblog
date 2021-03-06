@@ -1,5 +1,5 @@
 [build]
-  base = "next/app/"
+  base = "node/app/"
   command = "yarn build"
 
 [[plugins]]

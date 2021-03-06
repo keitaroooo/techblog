@@ -7,12 +7,14 @@
     "test": "jest src/__tests__/.*/*.test.tsx?$",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-on-netlify"
   },
   "dependencies": {
     "date-fns": "^2.19.0",
     "gray-matter": "^4.0.2",
     "next": "10.0.7",
+    "next-on-netlify": "^2.9.0",
     "next-pwa": "^5.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",

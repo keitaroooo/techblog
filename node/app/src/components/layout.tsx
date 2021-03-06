@@ -1,36 +1,19 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'Keitaro';
+const name = 'Keitaroooo';
 export const siteTitle = 'KeitarooOO';
 
-type layout = {
+type Layout = {
   children: React.ReactNode;
   home?: boolean;
 };
 
-// const Layout = () =>{}の形だとexportしたときに型定義が引き継がれないっぽい
-function Layout({ children, home }: layout): JSX.Element {
+const Layout = ({ children, home }: Layout): JSX.Element => {
   return (
     <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
       <header className={styles.header}>
         {home ? (
           <>
@@ -76,6 +59,6 @@ function Layout({ children, home }: layout): JSX.Element {
       )}
     </div>
   );
-}
+};
 
 export default Layout;

@@ -4,6 +4,9 @@ import Head from 'next/head';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import ReactMarkdown from 'react-markdown/with-html';
+import { CodeBlock, InlineCode } from '../../components/code';
+import gfm from 'remark-gfm';
 
 const Post = ({ postData }: { postData: PostData }): JSX.Element => {
   return (
@@ -16,7 +19,11 @@ const Post = ({ postData }: { postData: PostData }): JSX.Element => {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <ReactMarkdown
+          plugins={[gfm]}
+          source={postData.content}
+          renderers={{ code: CodeBlock, inlineCode: InlineCode }}
+        />
       </article>
     </Layout>
   );
@@ -31,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   // Fetch necessary data for the blog post using params.id
   const postData = await getPostData(params.id as string);
   return {

@@ -17,11 +17,7 @@ const Home = ({
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>I&apos;m Keitaro. My policy is &apos;Kindness is for myself&apos;</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        <p>兵庫県出身です．趣味はお笑い鑑賞とスポーツ，旅です．好きな食べ物はうどんです．</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>

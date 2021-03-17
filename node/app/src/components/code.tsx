@@ -15,9 +15,7 @@ export const CodeBlock = ({ value, language }: P): JSX.Element => {
   );
 };
 
-
-// global.cssで指定するのもありだがCodeBlockにもスタイルが適用されてしまい面倒だったため，こちらで指定
-
+// global.css等で指定するのもあり
 export const InlineCode = styled.code`
   border: 1px solid #ccc;
   background: #eee;

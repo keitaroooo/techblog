@@ -1,50 +1,61 @@
-import Image from 'next/image';
-import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
-import Link from 'next/link';
-
-const name = 'Keitaroooo';
-export const siteTitle = 'KeitarooOO';
+import Head from 'next/head';
+import Header from './header';
 
 type Layout = {
   children: React.ReactNode;
-  home?: boolean;
+  title?: string;
+  id: string;
 };
 
-const Layout = ({ children, home }: Layout): JSX.Element => {
+const Layout = (props: Layout): JSX.Element => {
+  const { title, id, children } = props;
+  const siteTitle = 'KeitarooOO Tech Blog';
+  const pageTitle = title ? title : siteTitle;
+  const pageDescription = title ? title : 'Tech Blog of KeitarooOO';
+  const baseUrl = 'https://blog.keitaroooo.com';
+  const url = baseUrl + '/' + id;
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile2.jpg"
-              className={utilStyles.borderCircle}
-              height={180}
-              width={320}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+    <div>
+      <Head>
+        <title>{pageTitle}</title>
+        {/* ページの解説。検索結果に表示される。（検索結果の表示が必ずこの内容になるとは限らない
+          文書の説明を短文で指定する。ここで指定する値はGoogleの検索結果に表示されるなど、多くの検索エンジンで利用される */}
+        <meta name="description" content={pageDescription} />
+        {/* OGP設定 */}
+        {/* ページのタイプ */}
+        <meta property="og:type" content={title ? 'article' : 'blog'} />
+        {/* ページのタイトル */}
+        <meta property="og:title" content={pageTitle} />
+        {/* ページのURL */}
+        <meta property="og:url" content={url} />
+        {/* ページの説明文 */}
+        <meta property="og:description" content={pageDescription} />
+        {/* SNSでシェアされた際に表示する画像を指定 */}
+        <meta property="og:image" content={`${url}.png`} />
+        {/* ページのサイト名 */}
+        <meta property="og:site_name" content={siteTitle} />
+      </Head>
+
+      <header>
+        <Header siteTitle={siteTitle} />
       </header>
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+
+      <style jsx>
+        {`
+          main {
+            max-width: 60rem;
+            padding: 0 1rem;
+            margin: 3rem auto 6rem;
+          }
+
+          header {
+            width: 100%;
+            padding: 1rem;
+            background-color: #fed049;
+          }
+        `}
+      </style>
     </div>
   );
 };

@@ -1,33 +1,24 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { siteTitle } from '../components/layout';
 
-interface MyDocumentInterface {
-  url: string;
-  title: string;
-  description: string;
-}
-
-class MyDocument extends Document implements MyDocumentInterface {
-  url = 'https://example.com';
-  title = siteTitle;
-  description = 'Blog of Keitaroooo';
-
+class MyDocument extends Document {
   render(): JSX.Element {
     return (
+      // ドキュメントの言語が日本語であることを宣言
       <Html lang="ja-JP">
         <Head>
-          <meta name="description" content={this.description} />
+          {/* テーマカラーを指定 */}
           <meta name="theme-color" content="#333" />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content={this.title} />
-          <meta property="og:url" content={this.url} />
-          <meta property="og:description" content={this.description} />
-          <meta property="og:site_name" content={this.title} />
-          <meta property="og:image" content={`${this.url}/ogp.png`} />
+          {/* TwitterでのOGP設定 */}
+          {/* Twitter上での表示タイプを指定 */}
           <meta name="twitter:card" content="summary_large_image" />
+          {/* コンテンツ作成者のTwitterユーザーIDを入力 */}
+          <meta name="twitter:creator" content="@keitaroudon" />
           <meta name="format-detection" content="telephone=no" />
+          {/* ファビコン画像の指定 */}
           <link rel="icon" href="/favicon.ico" />
+          {/* スマホでホームにサイトを追加したときに表示するアイコン画像の指定 */}
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          {/* マニフェストの展開，PWAに必要な情報を提供 */}
           <link rel="manifest" href="/manifest.json" />
         </Head>
         <body>

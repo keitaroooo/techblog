@@ -10,15 +10,19 @@ const Header = ({ siteTitle }: { siteTitle: string }): JSX.Element => {
       </h1>
       <nav>
         <ul>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
+          <li key="About">
+            <Link href="/about">
+              <a>About</a>
+            </Link>
+          </li>
         </ul>
       </nav>
       <style jsx>{`
         section {
           display: flex;
           align-items: center;
+          background-color: #fed049;
+          padding: 1rem;
         }
         h1 {
           margin: 0;
@@ -34,10 +38,11 @@ const Header = ({ siteTitle }: { siteTitle: string }): JSX.Element => {
           display: flex;
         }
         li {
-          margin: 2em 0 0 0;
+          margin: 0 0 0 1rem;
         }
         nav {
           margin: 0 0 0 auto;
+          padding: 0 1rem 0 0;
         }
       `}</style>
     </section>

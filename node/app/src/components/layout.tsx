@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from './header';
+import AboutHeader from './aboutHeader';
 
 type Layout = {
   children: React.ReactNode;
@@ -37,7 +38,11 @@ const Layout = (props: Layout): JSX.Element => {
       </Head>
 
       <header>
-        <Header siteTitle={siteTitle} />
+        {pageTitle !== 'About' ? (
+          <Header siteTitle={siteTitle} />
+        ) : (
+          <AboutHeader siteTitle={siteTitle} />
+        )}
       </header>
       <main>{children}</main>
 
@@ -47,12 +52,6 @@ const Layout = (props: Layout): JSX.Element => {
             max-width: 60rem;
             padding: 0 1rem;
             margin: 3rem auto 6rem;
-          }
-
-          header {
-            width: 100%;
-            padding: 1rem;
-            background-color: #fed049;
           }
         `}
       </style>

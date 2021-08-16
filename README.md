@@ -5,5 +5,6 @@
 - React
 - Next.js
 - TypeScript
-- react-markdown
+- remark(react-markdown)
 - MDX(about page)
+- Vercel

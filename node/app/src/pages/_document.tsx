@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <meta name="twitter:creator" content="@keitaroudon" />
           <meta name="format-detection" content="telephone=no" />
           {/* ファビコン画像の指定 */}
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/logo.svg" />
           {/* スマホでホームにサイトを追加したときに表示するアイコン画像の指定 */}
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           {/* マニフェストの展開，PWAに必要な情報を提供 */}

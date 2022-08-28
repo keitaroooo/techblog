@@ -1,8 +1,8 @@
-import Layout from '../components/layout';
-import { getSortedPostsData, AllPostsData } from '../lib/posts';
-import Link from 'next/link';
-import Date from '../components/date';
-import { GetStaticProps } from 'next';
+import Layout from "../components/layout";
+import { getSortedPostsData, AllPostsData } from "../lib/posts";
+import Link from "next/link";
+import Date from "../components/date";
+import { GetStaticProps } from "next";
 
 const Home = ({
   allPostsData,

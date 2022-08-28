@@ -1,4 +1,3 @@
 module.exports = {
-  arrowParens: 'always',
-  singleQuote: true,
+  doubleQuote: true,
 };

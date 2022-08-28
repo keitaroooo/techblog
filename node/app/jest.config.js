@@ -1,17 +1,17 @@
 module.exports = {
-  preset: 'ts-jest',
-  roots: ['<rootDir>/src'],
+  preset: "ts-jest",
+  roots: ["<rootDir>/src"],
   moduleNameMapper: {
     // CSS モックをモックする設定
-    '\\.(css|scss)$': 'identity-obj-proxy',
+    "\\.(css|scss)$": "identity-obj-proxy",
     // pages と components ディレクトリのエイリアスを設定（必要であれば他のディレクトリも追加）
-    '^(pages|components)/(.+)': '<rootDir>/src/$1/$2',
+    "^(pages|components)/(.+)": "<rootDir>/src/$1/$2",
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   globals: {
-    'ts-jest': {
+    "ts-jest": {
       tsconfig: {
-        jsx: 'react',
+        jsx: "react-jsx",
       },
     },
   },

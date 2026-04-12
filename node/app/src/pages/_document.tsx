@@ -1,7 +1,8 @@
+import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
-  render(): JSX.Element {
+  render(): React.ReactElement {
     return (
       // ドキュメントの言語が日本語であることを宣言
       <Html lang="ja-JP">

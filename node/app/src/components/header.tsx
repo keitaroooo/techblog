@@ -1,18 +1,19 @@
+import React from 'react';
 import Link from 'next/link';
 
-const Header = ({ siteTitle }: { siteTitle: string }): JSX.Element => {
+const Header = ({ siteTitle }: { siteTitle: string }): React.ReactElement => {
   return (
     <section>
       <h1>
         <Link href="/">
-          <a>{siteTitle}</a>
+          {siteTitle}
         </Link>
       </h1>
       <nav>
         <ul>
           <li key="About">
             <Link href="/about">
-              <a>About</a>
+              About
             </Link>
           </li>
         </ul>
@@ -28,7 +29,8 @@ const Header = ({ siteTitle }: { siteTitle: string }): JSX.Element => {
           margin: 0;
           padding: 0;
         }
-        a {
+        h1 :global(a),
+        li :global(a) {
           color: #282846;
           text-decoration: none;
         }

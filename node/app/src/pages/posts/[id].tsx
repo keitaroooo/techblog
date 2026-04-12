@@ -1,10 +1,11 @@
+import React from 'react';
 import Layout from '../../components/layout';
 import { getAllPostIds, getPostData, PostData } from '../../lib/posts';
 import Date from '../../components/date';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import ReactMarkdown from 'react-markdown/with-html';
-import { CodeBlock, InlineCode } from '../../components/code';
-import gfm from 'remark-gfm';
+import ReactMarkdown, { Components } from 'react-markdown';
+import { CodeBlock } from '../../components/code';
+import remarkGfm from 'remark-gfm';
 import styled from 'styled-components';
 
 // <style jsx></style>ではうまくいかなかった，マークダウンレンダリングのスタイリングはタイミングが違うのかも
@@ -18,7 +19,7 @@ const Post = ({
 }: {
   postData: PostData;
   id: string;
-}): JSX.Element => {
+}): React.ReactElement => {
   return (
     <Layout title={postData.title} id={id}>
       <article>
@@ -27,10 +28,15 @@ const Post = ({
           <Date dateString={postData.date} />
         </div>
         <ReactMarkdown
-          plugins={[gfm]}
-          source={postData.content}
-          renderers={{ code: CodeBlock, inlineCode: InlineCode, list: List }}
-        />
+          remarkPlugins={[remarkGfm]}
+          components={{
+            code: CodeBlock as Components['code'],
+            ul: List as Components['ul'],
+            pre: ({ children }) => <>{children}</>,
+          }}
+        >
+          {postData.content}
+        </ReactMarkdown>
       </article>
     </Layout>
   );
@@ -45,10 +51,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Fetch necessary data for the blog post using params.id
-  const postData = await getPostData(params.id as string);
-  const id = params.id;
+  const postData = await getPostData(params?.id as string);
+  const id = params?.id;
   return {
     props: {
       postData,

@@ -13,11 +13,22 @@ parserOptions:
   sourceType: module # use import/export
 plugins:
   - "@typescript-eslint"
+settings:
+  react:
+    version: detect
 extends:
   - eslint:recommended
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
   - plugin:react/recommended
+  - plugin:react/jsx-runtime
   - plugin:react-hooks/recommended
   - plugin:jest/recommended
   - prettier
+rules:
+  react/no-unknown-property:
+    - error
+    - ignore:
+        - jsx
+        - global
+  "@typescript-eslint/no-explicit-any": warn

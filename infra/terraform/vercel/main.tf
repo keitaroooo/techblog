@@ -9,6 +9,7 @@ resource "vercel_project" "techblog" {
   name           = var.project_name
   framework      = "nextjs"
   root_directory = "node/app"
+  node_version   = "22.x"
 
   git_repository = {
     type = "github"

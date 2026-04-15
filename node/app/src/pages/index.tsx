@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../components/layout";
 import { getSortedPostsData, AllPostsData } from "../lib/posts";
 import Link from "next/link";
@@ -8,7 +9,7 @@ const Home = ({
   allPostsData,
 }: {
   allPostsData: AllPostsData;
-}): JSX.Element => {
+}): React.ReactElement => {
   return (
     <Layout id="">
       <section>
@@ -17,7 +18,7 @@ const Home = ({
           {allPostsData.map(({ id, date, title }) => (
             <li key={id}>
               <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+                {title}
               </Link>
               <br />
               <small>

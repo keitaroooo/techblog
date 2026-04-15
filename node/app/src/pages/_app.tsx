@@ -1,7 +1,8 @@
+import React from 'react';
 import 'styles/globals.css';
 import { AppProps } from 'next/app';
 
-const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => {
   return <Component {...pageProps} />;
 };
 

@@ -1,10 +1,11 @@
+import React from 'react';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const name = 'Keitaroooo';
 
-const Profile = (): JSX.Element => {
+const Profile = (): React.ReactElement => {
   return (
     <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
       <Link href="/">

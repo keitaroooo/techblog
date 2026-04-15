@@ -1,28 +1,29 @@
+import React from 'react';
 import Link from 'next/link';
 
-const AboutHeader = ({ siteTitle }: { siteTitle: string }): JSX.Element => {
+const AboutHeader = ({ siteTitle }: { siteTitle: string }): React.ReactElement => {
   return (
     <section>
       <h1>
         <Link href="/">
-          <a>{siteTitle}</a>
+          {siteTitle}
         </Link>
       </h1>
       <nav>
         <ul>
           <li key="Profile">
             <Link href="/about">
-              <a>Profile</a>
+              Profile
             </Link>
           </li>
           <li key="Skills">
             <Link href="/about/skills">
-              <a>Skills</a>
+              Skills
             </Link>
           </li>
           <li key="Works">
             <Link href="/about/works">
-              <a>Works</a>
+              Works
             </Link>
           </li>
         </ul>
@@ -39,7 +40,8 @@ const AboutHeader = ({ siteTitle }: { siteTitle: string }): JSX.Element => {
           padding: 5rem 0;
           font-size: 2em;
         }
-        a {
+        h1 :global(a),
+        li :global(a) {
           text-decoration: none;
           color: #d8ebe4;
           -webkit-text-stroke: 0.05em black;

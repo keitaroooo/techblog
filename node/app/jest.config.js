@@ -1,5 +1,6 @@
 module.exports = {
   preset: "ts-jest",
+  testEnvironment: "jsdom",
   roots: ["<rootDir>/src"],
   moduleNameMapper: {
     // CSS モックをモックする設定
@@ -8,11 +9,14 @@ module.exports = {
     "^(pages|components)/(.+)": "<rootDir>/src/$1/$2",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
-  globals: {
-    "ts-jest": {
-      tsconfig: {
-        jsx: "react-jsx",
+  transform: {
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        tsconfig: {
+          jsx: "react-jsx",
+        },
       },
-    },
+    ],
   },
 };

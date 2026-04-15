@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import Header from './header';
 import AboutHeader from './aboutHeader';
@@ -8,7 +9,7 @@ type Layout = {
   id: string;
 };
 
-const Layout = (props: Layout): JSX.Element => {
+const Layout = (props: Layout): React.ReactElement => {
   const { title, id, children } = props;
   const siteTitle = 'KeitarooOO Tech Blog';
   const pageTitle = title ? title : siteTitle;

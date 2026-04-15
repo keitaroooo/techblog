@@ -1,17 +1,22 @@
+import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import style from 'react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus';
 import styled from 'styled-components';
 
-type P = {
-  value: string;
-  language?: string;
+type CodeProps = React.HTMLAttributes<HTMLElement> & {
+  children?: React.ReactNode;
 };
 
-export const CodeBlock = ({ value, language }: P): JSX.Element => {
-  return (
-    <SyntaxHighlighter language={language} style={style}>
-      {value}
+export const CodeBlock = ({ className, children, ...props }: CodeProps): React.ReactElement => {
+  const match = /language-(\w+)/.exec(className || '');
+  return match ? (
+    <SyntaxHighlighter language={match[1]} style={style}>
+      {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
+  ) : (
+    <InlineCode className={className} {...props}>
+      {children}
+    </InlineCode>
   );
 };
 

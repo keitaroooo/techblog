@@ -28,7 +28,7 @@ git push -u origin HEAD && gh pr create --title "post: …" --body "…"
 
 ## ガードレール
 
-`bash .githooks/install.sh` で pre-commit / pre-push の秘密情報スキャンを有効化。
+設定: [`.githooks/guardrails.json`](.githooks/guardrails.json)（hooks の warn/block）。`bash .githooks/install.sh` で有効化。
 
 ## Local
 

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 root="$(git rev-parse --show-toplevel)"
-remote="${1:-origin}"
-url="${2:-}"
-
 while read -r local_ref local_sha remote_ref remote_sha; do
   [[ "$local_sha" == "0000000000000000000000000000000000000000" ]] && continue
   if [[ "$remote_sha" == "0000000000000000000000000000000000000000" ]]; then
@@ -11,5 +8,5 @@ while read -r local_ref local_sha remote_ref remote_sha; do
   else
     range="${remote_sha}..${local_sha}"
   fi
-  "$root/.githooks/guard_secrets.sh" --range "$range"
+  python3 "$root/.githooks/guard_secrets.py" --hook pre-push --range "$range"
 done

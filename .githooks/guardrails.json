@@ -1,0 +1,9 @@
+{
+  "_comment": "git.hooks のみ上書き。パターンは guard_secrets.py の DEFAULTS + 必要ならここに追加",
+  "git": {
+    "hooks": {
+      "pre_commit": { "enabled": true, "mode": "warn" },
+      "pre_push": { "enabled": true, "mode": "block" }
+    }
+  }
+}

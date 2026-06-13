@@ -30,9 +30,9 @@ keitaro-yamaguchi の `engineering/` や Cursor セッションから清書す�
 ### 清書の流れ
 
 ```
-keitaro-yamaguchi/engineering/  →  techblog/docs/（ここで候補管理）
+keitaro-yamaguchi/engineering/  →  techblog/docs/（main 直 push）
         ↓
-node/app/src/posts/*.md  →  Vercel
+src/posts/*.md  →  PR → merge  →  Vercel
 ```
 
 ## 候補の扱い

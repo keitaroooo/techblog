@@ -17,6 +17,6 @@ engineering/ · Cursor セッション  （一次入力）
 techblog/docs/*.md                （整理）
         ↓ 清書
 src/posts/*.md                    （公開）
-        ↓ main push
+        ↓ PR → merge main
 Vercel
 ```

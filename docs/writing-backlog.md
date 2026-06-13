@@ -18,16 +18,25 @@ keitaro-yamaguchi の `engineering/` や Cursor セッションから清書す�
 | vercel-sub-domain | 同上 slug |
 | vscode-extensions-settings | 同上 slug |
 
-## 候補（Projects / engineering から）
+## メモから書ける候補
 
-| ソース | テーマ | 粒度 |
-|--------|--------|------|
-| keitaro-yamaguchi `engineering/` | AI 運用 · MCP · 継続的デリバリー slides | L — シリーズ化向き |
-| astphere 開発 | 仮想通貨コストベース計算 | M |
-| works-log 系 | 勤怠アプリ設計 | XL — 分割推奨 |
+| 優先 | 記事案 | ソース | 粒度 |
+|------|--------|--------|------|
+| 高 | JJUG CCC 2025 Fall 参加記（セッションまとめ） | [`engineering/jjug-ccc-2025-fall.md`](https://github.com/keitaroooo/keitaro-yamaguchi/blob/main/engineering/jjug-ccc-2025-fall.md) | L — セッションごとに分割可 |
+| 高 | 仕事で使っている AI ツールと MCP の使い分け | [`engineering/AI.md`](https://github.com/keitaroooo/keitaro-yamaguchi/blob/main/engineering/AI.md) 共有会セクション | M |
+| 中 | 継続的デリバリー読書会（スライド要約） | [`engineering/slides/継続的デリバリー_slides.md`](https://github.com/keitaroooo/keitaro-yamaguchi/blob/main/engineering/slides/継続的デリバリー_slides.md) | M |
+| 低 | astphere 仮想通貨コストベース可視化 | astphere 開発 + [`assets/README.md`](https://github.com/keitaroooo/keitaro-yamaguchi/blob/main/assets/README.md) | L — 実装完了後 |
 
-## 未執筆の扱い
+### 清書の流れ
 
-- アイデアだけ → このファイルに1行追記（Issue は作らない）
+```
+keitaro-yamaguchi/engineering/  →  techblog/docs/（ここで候補管理）
+        ↓
+node/app/src/posts/*.md  →  Vercel
+```
+
+## 候補の扱い
+
+- アイデアだけ → このファイルに1行追記
 - 着手決定 → keitaro-yamaguchi Issue `[Build]` + Projects Ready
-- 清書完了 → `src/posts/` に追加、ここから Done へ移動
+- 清書完了 → `src/posts/` に追加、ここから公開済みへ移動

@@ -40,4 +40,20 @@ cd node/app && npm install && npm run dev
 
 - **デプロイ**: Vercel（`infra/terraform/vercel/`）— `main` push で自動デプロイ
 - **DNS**: [`keitaro-yamaguchi`](https://github.com/keitaroooo/keitaro-yamaguchi) で一元管理
-- **作業ログ**: [`infra/作業ログ.md`](infra/作業ログ.md)
+
+### Terraform
+
+コード: [`infra/terraform/vercel/`](infra/terraform/vercel/)
+
+| リソース | 説明 |
+| --- | --- |
+| `vercel_project.techblog` | Vercel プロジェクト（Next.js, root: `node/app`） |
+| `vercel_project_domain.techblog` | カスタムドメイン `techblog.keitaroooo.com` |
+
+```fish
+source infra/load_tokens.fish
+cd infra/terraform/vercel
+terraform init && terraform plan && terraform apply
+```
+
+import ブロックは `main.tf` に記載済み。Bitwarden Item 名は keitaro-yamaguchi / 他リポと同じ。

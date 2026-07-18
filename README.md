@@ -51,9 +51,10 @@ cd node/app && npm install && npm run dev
 | `vercel_project_domain.techblog` | カスタムドメイン `techblog.keitaroooo.com` |
 
 ```fish
-source infra/load_tokens.fish
+source ~/.config/vercel/terraform.fish
+# または source infra/load_tokens.fish
 cd infra/terraform/vercel
 terraform init && terraform plan && terraform apply
 ```
 
-import ブロックは `main.tf` に記載済み。Bitwarden Item 名は keitaro-yamaguchi / 他リポと同じ。
+トークン配置: `~/.config/vercel/terraform.fish`（テンプレ: [keitaro-yamaguchi `infra/secrets.example/vercel/`](https://github.com/keitaroooo/keitaro-yamaguchi/tree/main/infra/secrets.example/vercel)）。import ブロックは `main.tf` に記載済み。

@@ -1,7 +1,7 @@
 ---
 title: 技術執筆バックログ
 type: moc
-updated: 2026-06-13
+updated: 2026-07-26
 tags: [engineering, writing]
 ---
 
@@ -17,6 +17,7 @@ keitaro-yamaguchi の `engineering/` や Cursor セッションから清書す�
 | multiple-hosting-service-sub-domain | [techblog](https://techblog.keitaroooo.com/posts/multiple-hosting-service-sub-domain) |
 | vercel-sub-domain | 同上 slug |
 | vscode-extensions-settings | 同上 slug |
+| personal-dev-hosting | [techblog](https://techblog.keitaroooo.com/posts/personal-dev-hosting) |
 
 ## メモから書ける候補
 
@@ -34,6 +35,22 @@ keitaro-yamaguchi/engineering/  →  techblog/docs/（main 直 push）
         ↓
 src/posts/*.md  →  PR → merge  →  Vercel
 ```
+
+## 記事ネタ（旧 Projects Backlog から移行 · 2026-07-26）
+
+- DNS のまとめと設定方法 — keitaro-yamaguchi `infra/README.md` がソース（keitaro-yamaguchi#151, keitaro-yamaguchi#308）
+- Amazon EC2（keitaro-yamaguchi#187）
+- ターミナル開発環境構築（keitaro-yamaguchi#252）
+- LaTeX の環境構築（keitaro-yamaguchi#303）
+- ソフトウェア開発において便利なツール（keitaro-yamaguchi#304）
+- VSCode でソフトウェア開発環境構築（keitaro-yamaguchi#305）
+- .NET を用いた開発（keitaro-yamaguchi#306）
+- Web サイトの構成（keitaro-yamaguchi#307）
+- 系列データの分類方法（keitaro-yamaguchi#310）
+- Python の環境構築方法（keitaro-yamaguchi#311）
+- リモート接続（keitaro-yamaguchi#312）
+- 複数のストレージを用いてマルチブート（keitaro-yamaguchi#313）
+- Google Analytics を活用する（keitaro-yamaguchi#314）
 
 ## 候補の扱い
 

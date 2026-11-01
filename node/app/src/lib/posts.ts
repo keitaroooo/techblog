@@ -1,5 +1,7 @@
+import { execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import { updatedDay } from './updatedDay';
 // gray-matterはfront matterと本文を解析してJSONデータに変換するツール
 import matter from 'gray-matter';
 
@@ -65,7 +67,43 @@ export type PostData = {
   content: string;
   title: string;
   date: string;
+  updated: string | null;
 };
+
+const repoRoot = path.resolve(process.cwd(), '../..');
+
+function loadUpdated(): Map<string, string> {
+  const map = new Map<string, string>();
+  try {
+    // shortcut: a shallow clone has no file history, so updated dates stay empty until that clone includes the commits
+    const out = execFileSync(
+      'git',
+      ['log', '--format=%cI', '--name-only', '--', 'node/app/src/posts'],
+      {
+        cwd: repoRoot,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+        maxBuffer: 10 * 1024 * 1024,
+      },
+    );
+    let iso: string | null = null;
+    for (const line of out.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+      if (/^\d{4}-\d{2}-\d{2}T/.test(trimmed)) {
+        iso = trimmed;
+        continue;
+      }
+      const base = path.basename(trimmed);
+      if (base.endsWith('.md') && iso && !map.has(base)) map.set(base, iso);
+    }
+  } catch {
+    return map;
+  }
+  return map;
+}
+
+const updatedByFile = loadUpdated();
 
 export const getPostData = async (id: string): Promise<PostData> => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
@@ -73,11 +111,13 @@ export const getPostData = async (id: string): Promise<PostData> => {
 
   // Use gray-matter to parse the post metadata section
   const { data, content } = matter(fileContents);
+  const meta = data as { title: string; date: string };
 
   // Combine the data with the id
   return {
     id,
     content,
-    ...(data as { title: string; date: string }),
+    ...meta,
+    updated: updatedDay(meta.date, updatedByFile.get(`${id}.md`) ?? null),
   };
 };

@@ -2,7 +2,7 @@
 
 import { extractHeadings } from '../../lib/extractHeadings';
 
-it('h2 と h3 を文書順に集め、コードフェンス内は無視し、id を s1 から振る', () => {
+it('h1 から h3 を文書順に集め、コードフェンス内は無視し、id を s1 から振る', () => {
   const markdown = [
     '# title',
     '## first',
@@ -16,9 +16,10 @@ it('h2 と h3 を文書順に集め、コードフェンス内は無視し、id 
   ].join('\n');
 
   expect(extractHeadings(markdown)).toEqual([
-    { level: 2, text: 'first', id: 's1' },
-    { level: 3, text: 'nested', id: 's2' },
-    { level: 2, text: 'second', id: 's3' },
-    { level: 3, text: 'after', id: 's4' },
+    { level: 1, text: 'title', id: 's1' },
+    { level: 2, text: 'first', id: 's2' },
+    { level: 3, text: 'nested', id: 's3' },
+    { level: 2, text: 'second', id: 's4' },
+    { level: 3, text: 'after', id: 's5' },
   ]);
 });

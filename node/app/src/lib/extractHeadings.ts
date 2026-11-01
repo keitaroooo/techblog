@@ -1,12 +1,12 @@
 export type TocHeading = {
-  level: 2 | 3;
+  level: 1 | 2 | 3;
   text: string;
   id: string;
 };
 
 const openFence = /^( {0,3})(`{3,}|~{3,})(.*)$/;
 const closeFence = /^( {0,3})(`{3,}|~{3,})[ \t]*$/;
-const atx = /^( {0,3})(#{2,3})[ \t]+(.*)$/;
+const atx = /^( {0,3})(#{1,3})[ \t]+(.*)$/;
 
 function headingText(raw: string): string {
   return raw.replace(/[ \t]+#+\s*$/, '').trim();
@@ -39,7 +39,7 @@ export function extractHeadings(markdown: string): TocHeading[] {
     if (!match) continue;
     const text = headingText(match[3]);
     if (!text) continue;
-    const level = match[2].length as 2 | 3;
+    const level = match[2].length as 1 | 2 | 3;
     headings.push({ level, text, id: `s${headings.length + 1}` });
   }
 

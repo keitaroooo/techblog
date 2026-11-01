@@ -62,8 +62,8 @@ const TocList = styled.ul`
   padding: 0;
 `;
 
-const TocItem = styled.li<{ $level: 2 | 3 }>`
-  margin: 0.25rem 0 0.25rem ${(props) => (props.$level === 3 ? '1rem' : '0')};
+const TocItem = styled.li<{ $level: 1 | 2 | 3 }>`
+  margin: 0.25rem 0 0.25rem ${(props) => (props.$level - 1) + 'rem'};
 `;
 
 const Post = ({
@@ -108,6 +108,7 @@ const Post = ({
                 code: CodeBlock as Components['code'],
                 ul: List as Components['ul'],
                 pre: ({ children }) => <>{children}</>,
+                h1: ({ children }) => <h1 id={takeId()}>{children}</h1>,
                 h2: ({ children }) => <h2 id={takeId()}>{children}</h2>,
                 h3: ({ children }) => <h3 id={takeId()}>{children}</h3>,
               }}

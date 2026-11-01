@@ -66,6 +66,12 @@ const TocItem = styled.li<{ $level: 1 | 2 | 3 }>`
   margin: 0.25rem 0 0.25rem ${(props) => (props.$level - 1) + 'rem'};
 `;
 
+const Share = styled.p`
+  a {
+    margin-right: 0.8em;
+  }
+`;
+
 const Post = ({
   postData,
   id,
@@ -74,6 +80,9 @@ const Post = ({
   id: string;
 }): React.ReactElement => {
   const headings = extractHeadings(postData.content);
+  const pageUrl = `https://techblog.keitaroooo.com/posts/${id}`;
+  const tweetHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(postData.title)}&url=${encodeURIComponent(pageUrl)}`;
+  const hatenaHref = `https://b.hatena.ne.jp/entry/panel/?url=${encodeURIComponent(pageUrl)}`;
   let headingIndex = 0;
   const takeId = (): string | undefined => {
     const headingId = headings[headingIndex]?.id;
@@ -87,7 +96,20 @@ const Post = ({
         <h1>{postData.title}</h1>
         <div>
           <Date dateString={postData.date} />
+          {postData.updated && (
+            <p>
+              更新 <Date dateString={postData.updated} />
+            </p>
+          )}
         </div>
+        <Share>
+          <a href={tweetHref} target="_blank" rel="noreferrer">
+            X
+          </a>
+          <a href={hatenaHref} target="_blank" rel="noreferrer">
+            はてブ
+          </a>
+        </Share>
         <Body $withToc={headings.length > 0}>
           {headings.length > 0 && (
             <Toc aria-label="目次">
